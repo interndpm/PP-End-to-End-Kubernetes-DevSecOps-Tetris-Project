@@ -6,7 +6,7 @@ data "aws_vpc" "vpc" {
 
 data "aws_internet_gateway" "igw" {
   tags = {
-    Name = "igw-name"
+    Name = "Jenkins-igw"
   }
 }
 
@@ -18,7 +18,7 @@ data "aws_subnet" "subnet" {
 data "aws_security_group" "sg-default" {
   vpc_id = data.aws_vpc.vpc.id
   tags = {
-    Name = "security-group-name"
+    Name = "Jenkins-sg"
   }
 }
 
