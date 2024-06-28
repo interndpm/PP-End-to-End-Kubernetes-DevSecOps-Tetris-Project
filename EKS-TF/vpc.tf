@@ -1,6 +1,6 @@
 data "aws_vpc" "vpc" {
   tags = {
-    Name = "vpc-name"
+    Name = "Jenkins-vpc"
   }
 }
 
