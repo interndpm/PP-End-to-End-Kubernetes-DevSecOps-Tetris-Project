@@ -1,12 +1,12 @@
 data "aws_vpc" "vpc" {
   tags = {
-    Name = "pp-vpc-name"
+    Name = "vpc-name"
   }
 }
 
 data "aws_internet_gateway" "igw" {
   tags = {
-    Name = "pp-internet-gateway-name"
+    Name = "igw-name"
   }
 }
 
@@ -18,7 +18,7 @@ data "aws_subnet" "subnet" {
 data "aws_security_group" "sg-default" {
   vpc_id = data.aws_vpc.vpc.id
   tags = {
-    Name = "pp-security-group-name"
+    Name = "security-group-name"
   }
 }
 
