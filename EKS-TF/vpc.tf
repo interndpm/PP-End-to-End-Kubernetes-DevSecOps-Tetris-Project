@@ -1,28 +1,24 @@
 data "aws_vpc" "vpc" {
-  filter {
-    name   = "tag:Name"
-    values = [var.vpc-name]
+  tags = {
+    Name = "pp-vpc-name"
   }
 }
 
 data "aws_internet_gateway" "igw" {
-  filter {
-    name   = "tag:Name"
-    values = [var.igw-name]
+  tags = {
+    Name = "pp-internet-gateway-name"
   }
 }
 
 data "aws_subnet" "subnet" {
-  filter {
-    name   = "tag:Name"
-    values = [var.subnet-name]
-  }
+  vpc_id = data.aws_vpc.vpc.id
+  cidr_block = "10.0.1.0/24"  # Example of additional filter
 }
 
 data "aws_security_group" "sg-default" {
-  filter {
-    name   = "tag:Name"
-    values = [var.security-group-name]
+  vpc_id = data.aws_vpc.vpc.id
+  tags = {
+    Name = "pp-security-group-name"
   }
 }
 
