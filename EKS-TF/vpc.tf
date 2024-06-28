@@ -1,10 +1,9 @@
 data "aws_vpc" "vpc" {
-  tags = {
-    Name = "Jenkins-vpc"
-  }
+  id = "vpc-0fb18a10be812b77b"  # Replace with your actual VPC ID
 }
 
 data "aws_internet_gateway" "igw" {
+  vpc_id = data.aws_vpc.vpc.id
   tags = {
     Name = "Jenkins-igw"
   }
