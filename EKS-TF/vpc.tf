@@ -1,30 +1,35 @@
 data "aws_vpc" "vpc" {
-  id = "vpc-0fb18a10be812b77b"  # Replace with your actual VPC ID
+  filter {
+    name   = "tag:Name"
+    values = [var.vpc-name]
+  }
 }
 
 data "aws_internet_gateway" "igw" {
-  vpc_id = data.aws_vpc.vpc.id
-  tags = {
-    Name = "Jenkins-igw"
+  filter {
+    name   = "tag:Name"
+    values = [var.igw-name]
   }
 }
 
 data "aws_subnet" "subnet" {
-  vpc_id = data.aws_vpc.vpc.id
-  cidr_block = "10.0.1.0/24"  # Example of additional filter
+  filter {
+    name   = "tag:Name"
+    values = [var.subnet-name]
+  }
 }
 
 data "aws_security_group" "sg-default" {
-  vpc_id = data.aws_vpc.vpc.id
-  tags = {
-    Name = "Jenkins-sg"
+  filter {
+    name   = "tag:Name"
+    values = [var.security-group-name]
   }
 }
 
 resource "aws_subnet" "public-subnet2" {
   vpc_id                  = data.aws_vpc.vpc.id
   cidr_block              = "10.0.2.0/24"
-  availability_zone       = "us-east-1b"
+  availability_zone       = "ap-southeast-2"
   map_public_ip_on_launch = true
 
   tags = {
