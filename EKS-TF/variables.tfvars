@@ -1,5 +1,5 @@
-vpc-name            = "Jenkins-vpc"
-igw-name            = "Jenkins-igw"
+vpc-name      = "Jenkins-vpc-pp"
+igw-name      = "Jenkins-igw"
 subnet-name         = "Jenkins-subnet"
 subnet-name2        = "Jenkins-subnet2"
 security-group-name = "Jenkins-sg"
